@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detailmovie.DetailMovieActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_image_movie_detail"
+            android:layout_width="165dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="24dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_title_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="64dp"
+            android:layout_marginTop="18dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_image_movie_detail"
+            tools:text="Judul Disini nanti" />
+
+        <TextView
+            android:id="@+id/tv_rating_movie_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_movie_detail"
+            tools:text="8.0" />
+
+        <RatingBar
+            android:id="@+id/rb_rating_movie_detail"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_rating_movie_detail" />
+
+
+        <TextView
+            android:id="@+id/tv_genre_movie_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rb_rating_movie_detail"
+            tools:text="Action, Fantasy, Comedy, Romance" />
+
+        <TextView
+            android:id="@+id/tv_druntime_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_dlanguage_movie_detail"
+            app:layout_constraintTop_toBottomOf="@id/tv_genre_movie_detail"
+            android:text="Runtime" />
+
+        <TextView
+            android:id="@+id/tv_dlanguage_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/tv_druntime_movie_detail"
+            app:layout_constraintRight_toLeftOf="@id/tv_dyear_movie_detail"
+            app:layout_constraintTop_toTopOf="@id/tv_druntime_movie_detail"
+            android:text="Language" />
+
+        <TextView
+            android:id="@+id/tv_dyear_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/tv_dlanguage_movie_detail"
+            app:layout_constraintRight_toLeftOf="@id/tv_dpopularity_movie_detail"
+            app:layout_constraintTop_toTopOf="@id/tv_druntime_movie_detail"
+            android:text="year" />
+
+        <TextView
+            android:id="@+id/tv_dpopularity_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/tv_dyear_movie_detail"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_druntime_movie_detail"
+            android:text="Popularity" />
+
+        <TextView
+            android:id="@+id/tv_runtime_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_language_movie_detail"
+            app:layout_constraintTop_toBottomOf="@id/tv_druntime_movie_detail"
+            tools:text="120 Minute" />
+
+        <TextView
+            android:id="@+id/tv_language_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/tv_runtime_movie_detail"
+            app:layout_constraintRight_toLeftOf="@id/tv_year_movie_detail"
+            app:layout_constraintTop_toTopOf="@id/tv_runtime_movie_detail"
+            tools:text="English" />
+
+        <TextView
+            android:id="@+id/tv_year_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/tv_language_movie_detail"
+            app:layout_constraintRight_toLeftOf="@id/tv_popularity_movie_detail"
+            app:layout_constraintTop_toTopOf="@id/tv_runtime_movie_detail"
+            tools:text="2020" />
+
+        <TextView
+            android:id="@+id/tv_popularity_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/tv_year_movie_detail"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_runtime_movie_detail"
+            tools:text="160.789" />
+
+        <TextView
+            android:id="@+id/tv_doverview_movie_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_runtime_movie_detail"
+            android:text="Overview" />
+
+        <TextView
+            android:id="@+id/tv_overview_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_doverview_movie_detail"
+            tools:text="Lorem ipsum dolo sit amet" />
+
+        <TextView
+            android:id="@+id/tv_dfeaturedcast_movie_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_overview_movie_detail"
+            android:text="Featured Cast" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_featuredcast_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_dfeaturedcast_movie_detail" />
+
+        <TextView
+            android:id="@+id/tv_dcast_movie_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_featuredcast_movie_detail"
+            android:text="Cast" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cast_movie_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_dcast_movie_detail" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

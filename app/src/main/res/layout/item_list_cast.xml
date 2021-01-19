@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:src="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_marginHorizontal="2dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_image_list_cast"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        src:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name_list_cast"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:maxLines="1"
+        android:maxEms="3"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@id/iv_image_list_cast"
+        app:layout_constraintLeft_toLeftOf="@id/iv_image_list_cast"
+        app:layout_constraintRight_toRightOf="@id/iv_image_list_cast"
+        src:text="Original Name" />
+
+    <TextView
+        android:id="@+id/tv_character_list_cast"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:maxLines="1"
+        android:maxEms="3"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_list_cast"
+        app:layout_constraintLeft_toLeftOf="@id/iv_image_list_cast"
+        app:layout_constraintRight_toRightOf="@id/iv_image_list_cast"
+        src:text="Character Name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
