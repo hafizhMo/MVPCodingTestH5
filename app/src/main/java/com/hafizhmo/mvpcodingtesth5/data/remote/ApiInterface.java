@@ -1,7 +1,7 @@
 package com.hafizhmo.mvpcodingtesth5.utils;
 
-import com.hafizhmo.mvpcodingtesth5.data.PojoDetailMovie;
-import com.hafizhmo.mvpcodingtesth5.data.PojoTopRatedMovie;
+import com.hafizhmo.mvpcodingtesth5.data.remote.PojoDetailMovie;
+import com.hafizhmo.mvpcodingtesth5.data.remote.PojoTopRatedMovie;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
