@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hafizhmo.mvpcodingtesth5.R;
-import com.hafizhmo.mvpcodingtesth5.data.PojoDetailMovie;
+import com.hafizhmo.mvpcodingtesth5.model.PojoDetailMovie;
 import com.hafizhmo.mvpcodingtesth5.databinding.ItemListCastBinding;
 import com.squareup.picasso.Picasso;
 
@@ -40,7 +40,17 @@ public class CastMovieAdapter extends RecyclerView.Adapter<CastMovieAdapter.View
 
     @Override
     public int getItemCount() {
-        return castList.size();
+        int castSize = castList.size();
+        if (castList.size() > 8){
+            castSize = 8;
+        }
+
+        return castSize;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -52,7 +62,8 @@ public class CastMovieAdapter extends RecyclerView.Adapter<CastMovieAdapter.View
             binding.tvNameListCast.setText(cast.mOriginalName);
             binding.tvCharacterListCast.setText(cast.mCharacter);
 
-            Picasso.get().load("http://image.tmdb.org/t/p/w500" + cast.mProfilePath).placeholder(R.mipmap.ic_launcher).into(binding.ivImageListCast);
+            Picasso.with(mContext).load("https://image.tmdb.org/t/p/w500" + cast.mProfilePath)
+                    .placeholder(R.drawable.ic_placeholder).into(binding.ivImageListCast);
         }
     }
 }

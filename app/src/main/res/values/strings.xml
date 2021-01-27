@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MVPCodingTestH5</string>
+    <string name="runtime">Runtime</string>
+    <string name="language">Language</string>
+    <string name="year">year</string>
+    <string name="popularity">Popularity</string>
+    <string name="overview">Overview</string>
+    <string name="cast">Cast</string>
+    <string name="featured_cast">Featured Cast</string>
 </resources>

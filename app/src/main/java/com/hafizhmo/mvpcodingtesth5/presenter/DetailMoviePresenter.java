@@ -1,40 +1,43 @@
-package com.hafizhmo.mvpcodingtesth5.ui.detailmovie;
+package com.hafizhmo.mvpcodingtesth5.presenter;
 
 import com.hafizhmo.mvpcodingtesth5.model.PojoDetailMovie;
-import com.hafizhmo.mvpcodingtesth5.repository.detailmovie.DetailMovieDataResource;
-import com.hafizhmo.mvpcodingtesth5.repository.detailmovie.DetailMovieRepository;
+import com.hafizhmo.mvpcodingtesth5.model.PojoDetailMovie;
+import com.hafizhmo.mvpcodingtesth5.network.ApiClient;
+import com.hafizhmo.mvpcodingtesth5.ui.detailmovie.DetailMovieView;
 
-public class DetailMoviePresenter implements DetailMovieContract.DetailMoviePresenter{
+import java.util.List;
 
-    private DetailMovieContract.DetailMovieView DetailMovieView;
-    private DetailMovieRepository DetailMovieRepository;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    public DetailMoviePresenter(DetailMovieRepository DetailMovieRepository) {
-        this.DetailMovieRepository = DetailMovieRepository;
+public class DetailMoviePresenter {
+    private DetailMovieView detailMovieView;
+    private ApiClient apiClient;
+
+    public DetailMoviePresenter(DetailMovieView detailMovieView) {
+        this.detailMovieView = detailMovieView;
+        if (this.apiClient == null){
+            this.apiClient = new ApiClient();
+        }
+
     }
 
-    @Override
-    public void getDataDetail(int id) {
-        DetailMovieRepository.getDetailMovieResult(id, new DetailMovieDataResource.DetailMovieGetCallback() {
+    public void getMovieDetail(int id){
+        apiClient.getApi().getDetailMovie(id).enqueue(new Callback<PojoDetailMovie>() {
             @Override
-            public void onSucces(PojoDetailMovie detailMovie, String msg) {
-                DetailMovieView.onSuccess(detailMovie, msg);
+            public void onResponse(Call<PojoDetailMovie> call, Response<PojoDetailMovie> response) {
+                PojoDetailMovie pojoDetailMovie = response.body();
+
+                if (pojoDetailMovie != null){
+                    detailMovieView.onSucces(pojoDetailMovie, "load succes!");
+                }
             }
 
             @Override
-            public void onError(String msg) {
-                DetailMovieView.onError(msg);
+            public void onFailure(Call<PojoDetailMovie> call, Throwable t) {
+                detailMovieView.onError(t.toString());
             }
         });
-    }
-
-    @Override
-    public void onAttach(DetailMovieContract.DetailMovieView view) {
-        DetailMovieView = view;
-    }
-
-    @Override
-    public void onDettach() {
-        //do something..
     }
 }

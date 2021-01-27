@@ -3,19 +3,20 @@ package com.hafizhmo.mvpcodingtesth5.ui.detailmovie;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.hafizhmo.mvpcodingtesth5.R;
-import com.hafizhmo.mvpcodingtesth5.data.PojoDetailMovie;
+import com.hafizhmo.mvpcodingtesth5.model.PojoDetailMovie;
 import com.hafizhmo.mvpcodingtesth5.databinding.ActivityMovieDetailBinding;
-import com.hafizhmo.mvpcodingtesth5.di.DetailMovieRepositoryInject;
+import com.hafizhmo.mvpcodingtesth5.presenter.DetailMoviePresenter;
 import com.hafizhmo.mvpcodingtesth5.ui.detailmovie.adapter.CastMovieAdapter;
 import com.hafizhmo.mvpcodingtesth5.ui.detailmovie.adapter.CrewMovieAdapter;
 import com.squareup.picasso.Picasso;
 
-public class DetailMovieActivity extends AppCompatActivity implements DetailMovieContract.DetailMovieView{
+public class DetailMovieActivity extends AppCompatActivity implements DetailMovieView{
 
     public static final String EXTRA_MOVIE_ID = "extra_id";
 
@@ -30,16 +31,16 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
 
         int id = getIntent().getIntExtra(EXTRA_MOVIE_ID, 0);
 
-        DetailMoviePresenter moviePresenter = new DetailMoviePresenter(DetailMovieRepositoryInject.DetailMovieRepository(getApplicationContext()));
-        moviePresenter.onAttach(this);
-
-        moviePresenter.getDataDetail(id);
+        DetailMoviePresenter moviePresenter = new DetailMoviePresenter(this);
+        moviePresenter.getMovieDetail(id);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public void onSuccess(PojoDetailMovie detailMovie, String msg) {
+    public void onSucces(PojoDetailMovie detailMovie, String msg) {
 
-        Picasso.get().load("http://image.tmdb.org/t/p/w500" + detailMovie.mPosterPath).placeholder(R.mipmap.ic_launcher).into(binding.ivImageMovieDetail);
+        Picasso.with(getApplicationContext()).load("https://image.tmdb.org/t/p/w500" + detailMovie.mPosterPath)
+                .placeholder(R.drawable.ic_placeholder).into(binding.ivImageMovieDetail);
         binding.tvTitleMovieDetail.setText(detailMovie.mTitle);
         binding.tvRatingMovieDetail.setText(detailMovie.mVoteAverage.toString());
         binding.rbRatingMovieDetail.setRating(Float.parseFloat(String.valueOf(detailMovie.mVoteAverage/2)));

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hafizhmo.mvpcodingtesth5.R;
-import com.hafizhmo.mvpcodingtesth5.data.PojoTopRatedMovie;
+import com.hafizhmo.mvpcodingtesth5.model.PojoTopRatedMovie;
 import com.hafizhmo.mvpcodingtesth5.ui.detailmovie.DetailMovieActivity;
 import com.hafizhmo.mvpcodingtesth5.databinding.ItemListMovieTopratedBinding;
 import com.squareup.picasso.Picasso;
@@ -45,6 +45,11 @@ public class TopRatedMovieAdapter extends RecyclerView.Adapter<TopRatedMovieAdap
         return data.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewHolder(@NonNull View itemView) {
@@ -53,20 +58,17 @@ public class TopRatedMovieAdapter extends RecyclerView.Adapter<TopRatedMovieAdap
         }
          void onBind(PojoTopRatedMovie.Result result){
              binding.tvTitleListToprated.setText(result.mTitle);
-             binding.tvGenreListToprated.setText(result.mReleaseDate);
-             binding.rbRatingListToprated.setRating(Float.parseFloat(String.valueOf(result.mVoteAverage/2)));
+             binding.tvGenreListToprated.setText(result.mOriginalTitle);
 
-             Picasso.get().load("http://image.tmdb.org/t/p/w500" + result.mPosterPath).placeholder(R.mipmap.ic_launcher).into(binding.ivImageListToprated);
+             Picasso.with(mContext).load("https://image.tmdb.org/t/p/w500" + result.mPosterPath)
+                     .placeholder(R.drawable.ic_placeholder).into(binding.ivImageListToprated);
 
-             itemView.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
+             itemView.setOnClickListener(v -> {
 
-                     Intent i = new Intent(mContext, DetailMovieActivity.class);
-                     i.putExtra(DetailMovieActivity.EXTRA_MOVIE_ID, result.mId);
-                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                     mContext.startActivity(i);
-                 }
+                 Intent i = new Intent(mContext, DetailMovieActivity.class);
+                 i.putExtra(DetailMovieActivity.EXTRA_MOVIE_ID, result.mId);
+                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                 mContext.startActivity(i);
              });
          }
     }

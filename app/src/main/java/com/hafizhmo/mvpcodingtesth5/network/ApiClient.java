@@ -1,6 +1,4 @@
-package com.hafizhmo.mvpcodingtesth5.utils;
-
-import com.hafizhmo.mvpcodingtesth5.BuildConfig;
+package com.hafizhmo.mvpcodingtesth5.network;
 
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
@@ -8,16 +6,18 @@ import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
-    private static String BASE_URL = "https://api.themoviedb.org/3/movie/";
-    private static String API_KEY = BuildConfig.TmdbApiKey;
+import static com.hafizhmo.mvpcodingtesth5.BuildConfig.TmdbApiKey;
+import static com.hafizhmo.mvpcodingtesth5.BuildConfig.TmdbBaseUrl;
 
-    public static Retrofit getClient() {
-         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(chain -> {
+public class ApiClient {
+
+    public ApiInterface getApi(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(chain -> {
             Request original = chain.request();
 
             HttpUrl url = original.url().newBuilder()
-                    .addQueryParameter("api_key", API_KEY)
+                    .addQueryParameter("api_key", TmdbApiKey)
+                    .addQueryParameter("limit", "3")
                     .addQueryParameter("language", "en-US")
                     .addQueryParameter("append_to_response", "credits")
                     .build();
@@ -28,11 +28,11 @@ public class ApiClient {
             return chain.proceed(request);
         }).build();
 
-         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL).client(okHttpClient)
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(TmdbBaseUrl).client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        return retrofit;
+        return retrofit.create(ApiInterface.class);
     }
 }

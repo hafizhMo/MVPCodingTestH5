@@ -1,42 +1,44 @@
-package com.hafizhmo.mvpcodingtesth5.ui.topratedmovie;
+package com.hafizhmo.mvpcodingtesth5.presenter;
 
 import com.hafizhmo.mvpcodingtesth5.model.PojoTopRatedMovie;
-import com.hafizhmo.mvpcodingtesth5.repository.topratedmovie.TopRatedMovieDataResource;
-import com.hafizhmo.mvpcodingtesth5.repository.topratedmovie.TopRatedMovieRepository;
+import com.hafizhmo.mvpcodingtesth5.network.ApiClient;
+import com.hafizhmo.mvpcodingtesth5.ui.topratedmovie.TopRatedMovieView;
 
 import java.util.List;
 
-public class TopRatedMoviePresenter implements TopRatedMovieContract.TopRatedMoviePresenter{
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private TopRatedMovieContract.TopRatedMovieView topRatedMovieView;
-    private TopRatedMovieRepository topRatedMovieRepository;
+public class TopRatedMoviePresenter  {
 
-    public TopRatedMoviePresenter(TopRatedMovieRepository topRatedMovieRepository) {
-        this.topRatedMovieRepository = topRatedMovieRepository;
+    private TopRatedMovieView topRatedMovieView;
+    private ApiClient apiClient;
+
+    public TopRatedMoviePresenter(TopRatedMovieView topRatedMovieView) {
+        this.topRatedMovieView = topRatedMovieView;
+        if (this.apiClient == null){
+            this.apiClient = new ApiClient();
+        }
     }
 
-    @Override
-    public void getDataTopRated() {
-        topRatedMovieRepository.getTopRatedMovieResult(new TopRatedMovieDataResource.TopRatedMovieGetCallback() {
+    public void getMovieTopRated(){
+        apiClient.getApi().getTopRatedMovie().enqueue(new Callback<PojoTopRatedMovie>() {
             @Override
-            public void onSucces(List<PojoTopRatedMovie.Result> movielist, String msg) {
-                topRatedMovieView.onSuccess(movielist, msg);
+            public void onResponse(Call<PojoTopRatedMovie> call, Response<PojoTopRatedMovie> response) {
+                PojoTopRatedMovie pojoTopRatedMovie = response.body();
+
+                if (pojoTopRatedMovie != null && pojoTopRatedMovie.mResults != null){
+                    List<PojoTopRatedMovie.Result> movieList = pojoTopRatedMovie.mResults;
+                    topRatedMovieView.onSucces(movieList, "load succes!");
+                }
             }
 
             @Override
-            public void onError(String msg) {
-                topRatedMovieView.onError(msg);
+            public void onFailure(Call<PojoTopRatedMovie> call, Throwable t) {
+                topRatedMovieView.onError(t.toString());
             }
         });
-    }
 
-    @Override
-    public void onAttach(TopRatedMovieContract.TopRatedMovieView view) {
-        topRatedMovieView = view;
-    }
-
-    @Override
-    public void onDettach() {
-        //do something..
     }
 }

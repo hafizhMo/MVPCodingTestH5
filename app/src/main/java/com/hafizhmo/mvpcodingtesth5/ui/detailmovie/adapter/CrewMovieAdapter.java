@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.hafizhmo.mvpcodingtesth5.databinding.ItemListCrewBinding;
 
-import com.hafizhmo.mvpcodingtesth5.data.PojoDetailMovie;
+import com.hafizhmo.mvpcodingtesth5.model.PojoDetailMovie;
 
 import java.util.List;
 
@@ -44,6 +44,11 @@ public class CrewMovieAdapter extends RecyclerView.Adapter<CrewMovieAdapter.View
         }
 
         return crewSize;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

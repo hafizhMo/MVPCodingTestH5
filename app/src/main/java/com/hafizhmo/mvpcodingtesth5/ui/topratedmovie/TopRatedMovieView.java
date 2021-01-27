@@ -1,23 +1,13 @@
 package com.hafizhmo.mvpcodingtesth5.ui.topratedmovie;
 
-import com.hafizhmo.mvpcodingtesth5.base.BasePresenter;
 import com.hafizhmo.mvpcodingtesth5.model.PojoTopRatedMovie;
 
 import java.util.List;
 
-public class TopRatedMovieContract {
+public interface TopRatedMovieView {
 
-    public interface TopRatedMovieView {
+    void onSucces(List<PojoTopRatedMovie.Result> movieList, String msg);
 
-        void onSuccess(List<PojoTopRatedMovie.Result> movielist, String msg);
+    void onError(String msg);
 
-        void onError(String msg);
-
-    }
-
-    public interface TopRatedMoviePresenter extends BasePresenter<TopRatedMovieView>{
-
-        void getDataTopRated();
-
-    }
 }

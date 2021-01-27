@@ -1,21 +1,13 @@
 package com.hafizhmo.mvpcodingtesth5.ui.detailmovie;
 
-import com.hafizhmo.mvpcodingtesth5.base.BasePresenter;
 import com.hafizhmo.mvpcodingtesth5.model.PojoDetailMovie;
 
-public class DetailMovieContract {
+import java.util.List;
 
-    public interface DetailMovieView {
+public interface DetailMovieView {
 
-        void onSuccess(PojoDetailMovie detailMovie, String msg);
+    void onSucces(PojoDetailMovie detailMovies, String msg);
 
-        void onError(String msg);
+    void onError(String msg);
 
-    }
-
-    public interface DetailMoviePresenter extends BasePresenter<DetailMovieView>{
-
-        void getDataDetail(int id);
-
-    }
 }
