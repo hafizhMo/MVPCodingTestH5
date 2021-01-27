@@ -1,6 +1,6 @@
 package com.hafizhmo.mvpcodingtesth5.ui.topratedmovie;
 
-import com.hafizhmo.mvpcodingtesth5.data.PojoTopRatedMovie;
+import com.hafizhmo.mvpcodingtesth5.model.PojoTopRatedMovie;
 import com.hafizhmo.mvpcodingtesth5.repository.topratedmovie.TopRatedMovieDataResource;
 import com.hafizhmo.mvpcodingtesth5.repository.topratedmovie.TopRatedMovieRepository;
 

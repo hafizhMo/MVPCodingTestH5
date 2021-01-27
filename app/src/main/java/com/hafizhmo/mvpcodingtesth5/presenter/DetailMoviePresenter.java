@@ -1,10 +1,8 @@
 package com.hafizhmo.mvpcodingtesth5.ui.detailmovie;
 
-import com.hafizhmo.mvpcodingtesth5.data.PojoDetailMovie;
+import com.hafizhmo.mvpcodingtesth5.model.PojoDetailMovie;
 import com.hafizhmo.mvpcodingtesth5.repository.detailmovie.DetailMovieDataResource;
 import com.hafizhmo.mvpcodingtesth5.repository.detailmovie.DetailMovieRepository;
-
-import java.util.List;
 
 public class DetailMoviePresenter implements DetailMovieContract.DetailMoviePresenter{
 

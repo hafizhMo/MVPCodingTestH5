@@ -1,5 +1,5 @@
 
-package com.hafizhmo.mvpcodingtesth5.data.remote;
+package com.hafizhmo.mvpcodingtesth5.model;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;

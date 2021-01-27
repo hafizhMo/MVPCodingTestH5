@@ -1,9 +1,7 @@
 package com.hafizhmo.mvpcodingtesth5.ui.detailmovie;
 
 import com.hafizhmo.mvpcodingtesth5.base.BasePresenter;
-import com.hafizhmo.mvpcodingtesth5.data.PojoDetailMovie;
-
-import java.util.List;
+import com.hafizhmo.mvpcodingtesth5.model.PojoDetailMovie;
 
 public class DetailMovieContract {
 

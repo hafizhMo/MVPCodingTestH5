@@ -1,7 +1,7 @@
 package com.hafizhmo.mvpcodingtesth5.ui.topratedmovie;
 
 import com.hafizhmo.mvpcodingtesth5.base.BasePresenter;
-import com.hafizhmo.mvpcodingtesth5.data.PojoTopRatedMovie;
+import com.hafizhmo.mvpcodingtesth5.model.PojoTopRatedMovie;
 
 import java.util.List;
 
